@@ -90,6 +90,12 @@ public class IntraBrokerDiskUsageDistributionGoal extends AbstractGoal {
       double averageDiskUtilization = averageDiskUtilizationPercentage(broker);
       _balanceUpperThresholdByBroker.put(broker, averageDiskUtilization * (1 + balancePercentageWithMargin));
       _balanceLowerThresholdByBroker.put(broker, averageDiskUtilization * Math.max(0, (1 - balancePercentageWithMargin)));
+      System.out.println(String.format(
+              "Init Goal State: broker_id=%s, averageDiskUtilization=%f, _balanceLowerThresholdByBroker=%f _balanceUpperThresholdByBroker=%f",
+              broker.id(),
+              averageDiskUtilization,
+              _balanceLowerThresholdByBroker.get(broker),
+              _balanceUpperThresholdByBroker.get(broker)));
     }
 
     // Sort all the replicas for each disk based on disk utilization.
@@ -127,9 +133,11 @@ public class IntraBrokerDiskUsageDistributionGoal extends AbstractGoal {
         if (disk.isAlive()) {
           if (diskUtilizationPercentage(disk) > upperLimit) {
             disksAboveBalanceUpperLimit.add(broker.id() + ":" + disk.logDir());
+            System.out.println(String.format("Disk is above balance upper limit: broker=%d, logDir=%s", broker.id(), disk.logDir()));
           }
           if (diskUtilizationPercentage(disk) < lowerLimit) {
             disksBelowBalanceLowerLimit.add(broker.id() + ":" + disk.logDir());
+            System.out.println(String.format("Disk is below balance upper limit: broker=%d, logDir=%s", broker.id(), disk.logDir()));
           }
         }
       }

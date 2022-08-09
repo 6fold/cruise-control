@@ -95,11 +95,11 @@ public class KafkaCruiseControl {
     Properties props = new Properties();
 
     System.out.println("Test Logging");
-    LOG.trace("Test Logging: TRACE");
-    LOG.debug("Test Logging: DEBUG");
-    LOG.info("Test logging: INFO");
-    LOG.warn("Test Logging: WARN");
-    LOG.error("Test Logging: ERROR");
+//    LOG.trace("Test Logging: TRACE");
+//    LOG.debug("Test Logging: DEBUG");
+//    LOG.info("Test logging: INFO");
+//    LOG.warn("Test Logging: WARN");
+//    LOG.error("Test Logging: ERROR");
 
     try (InputStream resourceStream = KafkaCruiseControl.class.getResourceAsStream("/cruise-control/cruise-control-version.properties")) {
       props.load(resourceStream);

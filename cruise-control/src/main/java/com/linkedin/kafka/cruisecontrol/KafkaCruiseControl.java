@@ -94,7 +94,8 @@ public class KafkaCruiseControl {
   static {
     Properties props = new Properties();
 
-    System.out.println("Test Logging");
+//    System.out.println("Test Logging");
+//    System.out.println(">> ********************************************* <<");
 //    LOG.trace("Test Logging: TRACE");
 //    LOG.debug("Test Logging: DEBUG");
 //    LOG.info("Test logging: INFO");

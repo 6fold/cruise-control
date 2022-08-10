@@ -30,6 +30,12 @@ public final class KafkaCruiseControlMain {
                       KafkaCruiseControlMain.class.getSimpleName()));
     }
 
+    LOG.trace("Test Logging: TRACE");
+    LOG.debug("Test Logging: DEBUG");
+    LOG.info("Test logging: INFO");
+    LOG.warn("Test Logging: WARN");
+    LOG.error("Test Logging: ERROR");
+
     Thread.setDefaultUncaughtExceptionHandler((t, e) -> LOG.error("Uncaught exception on thread {}", t, e));
 
     KafkaCruiseControlConfig config = readConfig(args[0]);
